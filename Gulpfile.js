@@ -10,4 +10,10 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('public'));
 })
 
-gulp.task('default', ['styles'])
+gulp.task('assets', function() {
+	gulp
+		.src('assets/*') //copiar lo que esta adentro de assets
+		.pipe(gulp.dest('public'))
+})
+
+gulp.task('default', ['styles', 'assets'])
