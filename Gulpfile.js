@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
+var preset = require('babel-preset-es2015');
 
 gulp.task('styles', function() {
   gulp
@@ -14,6 +15,13 @@ gulp.task('assets', function() {
 	gulp
 		.src('assets/*') //copiar lo que esta adentro de assets
 		.pipe(gulp.dest('public'))
+})
+
+gulp.task('scripts', function() {
+	browserify('./src/index.js')
+	.transform(babel, {presets: ["es2015"]})
+	.bundle()
+	.pipe(souce('index.js'))
 })
 
 gulp.task('default', ['styles', 'assets'])
